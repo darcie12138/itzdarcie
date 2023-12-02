@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>cat1 - Category - darcie&#39;s blog</title>
+        <link>https://darcie12138.github.io/categories/cat1/</link>
+        <description>cat1 - Category - darcie&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>summer2zz@163.com (darcie)</managingEditor>
+            <webMaster>summer2zz@163.com (darcie)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 27 Mar 2021 21:56:51 &#43;0800</lastBuildDate><atom:link href="https://darcie12138.github.io/categories/cat1/" rel="self" type="application/rss+xml" /><item>
+    <title>Test1</title>
+    <link>https://darcie12138.github.io/test1/</link>
+    <pubDate>Sat, 27 Mar 2021 21:56:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://darcie12138.github.io/test1/</guid>
+    <description><![CDATA[<p>新建</p>]]></description>
+</item></channel>
+</rss>
