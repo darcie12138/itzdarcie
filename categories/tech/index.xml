@@ -4,12 +4,334 @@
         <link>https://darcie12138.github.io/categories/tech/</link>
         <description>Tech - Category - darcie&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>summer2zz@163.com (darcie)</managingEditor>
-            <webMaster>summer2zz@163.com (darcie)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Jul 2023 22:10:38 &#43;0800</lastBuildDate><atom:link href="https://darcie12138.github.io/categories/tech/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>summer2zz@163.com (darcie)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Nov 2023 22:10:38 &#43;0800</lastBuildDate><atom:link href="https://darcie12138.github.io/categories/tech/" rel="self" type="application/rss+xml" /><item>
+    <title>Personal Web Site</title>
+    <link>https://darcie12138.github.io/personal-web-site/</link>
+    <pubDate>Fri, 10 Nov 2023 22:10:38 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://darcie12138.github.io/personal-web-site/</guid>
+    <description><![CDATA[<h3 id="引用本地图片">引用本地图片</h3>
+<h4 id="1在static目录下创建img子目录">1.在<code>static</code>目录下创建<code>img</code>子目录</h4>
+<p>将需要引用的图片都放在<code>static\img</code>下。</p>
+<h4 id="2在markdown里引用本地图片">2.在<code>markdown</code>里引用本地图片</h4>
+<p>如想在<code>markdown</code>里引用<code>1.png</code>，那么就在<code>markdown</code>里输入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="line"><span class="cl">![](/img/1.png)
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
     <title>Equal Distribution Algorithm</title>
     <link>https://darcie12138.github.io/equal-distribution-algorithm/</link>
     <pubDate>Mon, 10 Jul 2023 22:10:38 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://darcie12138.github.io/equal-distribution-algorithm/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[<h4 id="定义函数">定义函数</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">from itertools import count
+</span></span><span class="line"><span class="cl">import numpy as np
+</span></span><span class="line"><span class="cl">import time
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">def avg_per_group(data):
+</span></span><span class="line"><span class="cl">    sum_per_group = data.sum(axis=1)   # 每行总和
+</span></span><span class="line"><span class="cl">    count_per_group = (data!=0).sum(axis=1)  # 每行非零数据个数
+</span></span><span class="line"><span class="cl">    return sum_per_group / count_per_group
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">def balance(data, shape, diff_expected=0.1, max_exchange=1000000):
+</span></span><span class="line"><span class="cl">    rows, cols, concav = shape
+</span></span><span class="line"><span class="cl">    # 每行平均值=每行total/每行非零数据个数
+</span></span><span class="line"><span class="cl">    def avg_per_group(data):
+</span></span><span class="line"><span class="cl">        sum_per_group = data.sum(axis=1)   # 每行总和
+</span></span><span class="line"><span class="cl">        count_per_group = (data!=0).sum(axis=1)  # 每行非零数据个数
+</span></span><span class="line"><span class="cl">        return sum_per_group / count_per_group
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    begin_time = time.time() 
+</span></span><span class="line"><span class="cl">    total_exchange = 0 # 交换次数
+</span></span><span class="line"><span class="cl">    for epoch in count(1, step=1):             # 从1开始，步长为1,epoch表示轮次
+</span></span><span class="line"><span class="cl">        diff_begin = avg_per_group(data).ptp()       # 极差,ptp()函数表示最大值与最小值的差
+</span></span><span class="line"><span class="cl">        if diff_begin &lt; diff_expected:
+</span></span><span class="line"><span class="cl">            print(&#39;=&#39;*80)
+</span></span><span class="line"><span class="cl">            print(&#39;极差已达标，成功优化!&#39;)
+</span></span><span class="line"><span class="cl">            break
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        row1, row2 = avg_per_group(data).argmax(), avg_per_group(data).argmin()   # 最大行，最小行
+</span></span><span class="line"><span class="cl">        bak = avg_per_group(data)[[row1, row2]]                             # 备份最大行，最小行
+</span></span><span class="line"><span class="cl">        valid_col1 = cols - (row1 &gt;= concav)  # 最大行有效数据个数
+</span></span><span class="line"><span class="cl">        valid_col2 = cols - (row2 &gt;= concav)  # 最小行有效数据个数
+</span></span><span class="line"><span class="cl">        diff_end = diff_begin
+</span></span><span class="line"><span class="cl">        for i in range(max_exchange):
+</span></span><span class="line"><span class="cl">            col1 = np.random.randint(0, valid_col1)   # 随机列1
+</span></span><span class="line"><span class="cl">            col2 = np.random.randint(0, valid_col2)   # 随机列2
+</span></span><span class="line"><span class="cl">            data[row1, col1], data[row2, col2] = data[row2, col2], data[row1, col1]  # 交换
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            diff_end = avg_per_group(data).ptp()   # 交换后的极差
+</span></span><span class="line"><span class="cl">            if abs(diff_end) &lt; diff_begin:   # 交换后的极差小于交换前的极差,abs()函数表示取绝对值
+</span></span><span class="line"><span class="cl">                temp = avg_per_group(data)[row1] + avg_per_group(data)[row2] 
+</span></span><span class="line"><span class="cl">                avg_per_group(data)[row1] = (temp + diff_end) / 2
+</span></span><span class="line"><span class="cl">                avg_per_group(data)[row2] = (temp - diff_end) / 2
+</span></span><span class="line"><span class="cl">                if epoch%1000==0 or i&gt;100000:
+</span></span><span class="line"><span class="cl">                    print(f&#39;轮次：{epoch:&lt;8}， 交换次数：{i+1:&lt;10}， 初始差距{diff_begin:&lt;8}， 结束差距：{abs(diff_end):&lt;8}&#39;)
+</span></span><span class="line"><span class="cl">                total_exchange += i+1
+</span></span><span class="line"><span class="cl">                break
+</span></span><span class="line"><span class="cl">        else:
+</span></span><span class="line"><span class="cl">            avg_per_group(data)[[row1, row2]] = bak  
+</span></span><span class="line"><span class="cl">            print(&#39;超过最大允许交换数，未达到优化目标!&#39;)
+</span></span><span class="line"><span class="cl">            total_exchange += max_exchange
+</span></span><span class="line"><span class="cl">            break
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    print(&#39;最终极差为：&#39;, avg_per_group(data).ptp())
+</span></span><span class="line"><span class="cl">    elapsed_time = time.time()-begin_time
+</span></span><span class="line"><span class="cl">    print(f&#39;{rows}行{cols}列的矩阵，优化{epoch-1}轮&#39;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="平均分配">平均分配</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">MQL</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;Abandoner&#34;</span><span class="p">,</span> <span class="s2">&#34;NS-psn&#34;</span><span class="p">,</span> <span class="s2">&#34;NS-biz&#34;</span><span class="p">,</span> <span class="s2">&#34;New Service&#34;</span><span class="p">,</span> <span class="s2">&#34;New Biller&#34;</span><span class="p">,</span> <span class="s2">&#34;Fast Mover&#34;</span><span class="p">,</span> <span class="s2">&#34;Others&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">MQL_cr</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.139</span><span class="p">,</span> <span class="mf">0.103</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.172</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">MQL_counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># replace with actual counts</span>
+</span></span><span class="line"><span class="cl"><span class="n">DGR</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;Zhong Fachao&#34;</span><span class="p">,</span> <span class="s2">&#34;Huang Jiaqi&#34;</span><span class="p">,</span>  <span class="s2">&#34;Fang Jun&#34;</span><span class="p">,</span> <span class="s2">&#34;Zhang Rebecca&#34;</span><span class="p">,</span> <span class="s2">&#34;Ma Haocheng&#34;</span><span class="p">,</span> <span class="s2">&#34;Yang Song&#34;</span><span class="p">,</span> <span class="s2">&#34;Sun Weiqiu&#34;</span><span class="p">,</span><span class="s2">&#34;Wang Yang&#34;</span><span class="p">,</span> <span class="s2">&#34;Zhao Hongyu&#34;</span><span class="p">]</span>   <span class="c1"># &#34;Huang Yudi&#34;, &#34;Zhang Jinzhen&#34;, &#34;Liang Chuang&#34;,</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">DGR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">N</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">MQL_counts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;MQL总数：&#34;</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Create a 2D matrix with default values as 0</span>
+</span></span><span class="line"><span class="cl"><span class="n">cols</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">N</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span>             
+</span></span><span class="line"><span class="cl"><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Fill the matrix with the sweetness of candies</span>
+</span></span><span class="line"><span class="cl"><span class="n">MQL_index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># MQL_index表示MQL_cr的索引</span>
+</span></span><span class="line"><span class="cl"><span class="n">ct</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>   <span class="c1"># j表示列</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>         <span class="c1"># i表示行</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">ct</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">:</span>            <span class="c1"># ct表示已经分配的MQL数量</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="n">MQL_counts</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">MQL_cr</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MQL_index</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">MQL_counts</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">MQL_cr</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MQL_counts</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ct</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">MQL_index</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">MQL_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">MQL_counts</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">MQL_cr</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">MQL_counts</span><span class="p">[</span><span class="n">MQL_index</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">ct</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">m</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">concave</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">concave</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;DGR人数：&#34;</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># print(candy_per_row)  矩阵的列数，即每个DGR被分到的MQL数量</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># print(concave)</span>
+</span></span><span class="line"><span class="cl"><span class="n">balance</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">concave</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">diff_expected</span> <span class="o">=</span> <span class="mf">0.005</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">MQL_cr</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 初始化输出表格</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">MQL_cr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 遍历矩阵并更新results表格</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="n">MQL_cr</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">column_index</span> <span class="o">=</span> <span class="n">MQL_cr</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">column_index</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 计算每行的总和和平均值</span>
+</span></span><span class="line"><span class="cl"><span class="n">row_sums</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">row_averages</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出结果</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># CR保留2位小数</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">DGR</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&#34;Total #MQL=&#34;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="s2">&#34;,&#34;</span> <span class="p">,</span><span class="s2">&#34;CR =&#34;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 转换为整数格式</span>
+</span></span><span class="line"><span class="cl"><span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将results转换为DataFrame</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">MQL</span><span class="p">,</span><span class="n">index</span> <span class="o">=</span> <span class="n">DGR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 增加两列</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Total #MQL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出表格</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出每种MQL的个数</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>]]></description>
 </item></channel>
 </rss>
