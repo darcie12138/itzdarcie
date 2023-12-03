@@ -1,0 +1,7 @@
+# Equal Distribution Algorithm
+
+
+
+
+<!--more-->
+
