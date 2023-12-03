@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Study - Tag - darcie&#39;s blog</title>
-        <link>https://darcie12138.github.io/tags/study/</link>
+        <link>https://darcie12138.github.io/tags/study.html</link>
         <description>Study - Tag - darcie&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>summer2zz@163.com (darcie)</managingEditor>
-            <webMaster>summer2zz@163.com (darcie)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Jul 2023 22:10:38 &#43;0800</lastBuildDate><atom:link href="https://darcie12138.github.io/tags/study/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>summer2zz@163.com (darcie)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Jul 2023 22:10:38 &#43;0800</lastBuildDate><atom:link href="https://darcie12138.github.io/tags/study.html" rel="self" type="application/rss+xml" /><item>
     <title>Equal Distribution Algorithm</title>
-    <link>https://darcie12138.github.io/equal-distribution-algorithm/</link>
+    <link>https://darcie12138.github.io/equal-distribution-algorithm.html</link>
     <pubDate>Mon, 10 Jul 2023 22:10:38 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://darcie12138.github.io/equal-distribution-algorithm/</guid>
+    <guid>https://darcie12138.github.io/equal-distribution-algorithm.html</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
